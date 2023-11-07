@@ -5,7 +5,7 @@
     "start": "webpack serve --mode development"
   },
   "devDependencies": {
-    "@types/three": "^0.158.0",
+    "@types/babylonjs": "^2.4.1",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "serve": "^14.2.1",
@@ -17,6 +17,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "three": "^0.158.0"
+    "@babylonjs/core": "^6.28.1",
+    "babylonjs": "^6.28.1"
   }
 }

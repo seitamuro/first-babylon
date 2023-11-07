@@ -5,6 +5,13 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@babylonjs/core@npm:^6.28.1":
+  version: 6.28.1
+  resolution: "@babylonjs/core@npm:6.28.1"
+  checksum: d597212fa135ae5d9dba54ced5c4abc68946bcb9d38eb69dcf0d77c5e3990a32ee9d07142e94d2f97415e1f078dbaa2962f47b275004533af6e8eb304082c27b
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -111,6 +118,15 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
+  languageName: node
+  linkType: hard
+
+"@types/babylonjs@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@types/babylonjs@npm:2.4.1"
+  dependencies:
+    babylonjs: "*"
+  checksum: acea7f72b70254740962000999cbdd57d7b8e56e4c9c44d723d46cf5bdf281e9b4c0ab9be75c3dc278102c7582b84c2234bf43b40e0920bf3123180d9a208860
   languageName: node
   linkType: hard
 
@@ -322,32 +338,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 829b6bbe155f4320a57429bcc3b87aedfec7ee0bd055d46ab021bed676fba0210600ad22d516fe3ae5b3989c2a2c892f2b95d47eb5e41e71ca48954b7abab79d
-  languageName: node
-  linkType: hard
-
-"@types/stats.js@npm:*":
-  version: 0.17.2
-  resolution: "@types/stats.js@npm:0.17.2"
-  checksum: cbe300f1a548051c353f5a17a9bde406f468cb171fad1b6ec3d50b8af539389ecbd4a99765bd67c9f7acd7608ed8c5a275b19a60c1545341c3cac58abf0f487e
-  languageName: node
-  linkType: hard
-
-"@types/three@npm:^0.158.0":
-  version: 0.158.0
-  resolution: "@types/three@npm:0.158.0"
-  dependencies:
-    "@types/stats.js": "*"
-    "@types/webxr": "*"
-    fflate: ~0.6.10
-    meshoptimizer: ~0.18.1
-  checksum: 605f34c13d93060e65ae0b7755b6d202b97d62024b67f2253cf35f90ac7f8b66f8bab81d032c4901a34a43b035b8e3242f30564d54ebd221622344db2fd24007
-  languageName: node
-  linkType: hard
-
-"@types/webxr@npm:*":
-  version: 0.5.7
-  resolution: "@types/webxr@npm:0.5.7"
-  checksum: 1a797043659788659983787ac75c1826b59d3bacfb263800650479f7cc5f721fb86126ac64b265c3dcb2793b09c5104faab053249a05a4b1b991a4b5a62c4d1e
   languageName: node
   linkType: hard
 
@@ -772,6 +762,13 @@ __metadata:
   version: 2.1.2
   resolution: "array-flatten@npm:2.1.2"
   checksum: e8988aac1fbfcdaae343d08c9a06a6fddd2c6141721eeeea45c3cf523bf4431d29a46602929455ed548c7a3e0769928cdc630405427297e7081bd118fdec9262
+  languageName: node
+  linkType: hard
+
+"babylonjs@npm:*, babylonjs@npm:^6.28.1":
+  version: 6.28.1
+  resolution: "babylonjs@npm:6.28.1"
+  checksum: 41cf897a4b3f98ff504613f684fce47d6024fe4ba11a46166f46563b2beb0b9f9d6af618fb03e91c78dcd63d9648894a66fbe2cc5a88f0e4e53e572c32adcbd7
   languageName: node
   linkType: hard
 
@@ -1688,13 +1685,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fflate@npm:~0.6.10":
-  version: 0.6.10
-  resolution: "fflate@npm:0.6.10"
-  checksum: 96384bc4090987fe565c0de8204e3830f538144ec950576fea50aee1b42adbe9fc3ed5e7905dfa7979faaa20979def330dbebce548f3dcafc3e118cc9838526d
-  languageName: node
-  linkType: hard
-
 "fill-range@npm:^7.0.1":
   version: 7.0.1
   resolution: "fill-range@npm:7.0.1"
@@ -2529,13 +2519,6 @@ __metadata:
   version: 2.0.0
   resolution: "merge-stream@npm:2.0.0"
   checksum: 6fa4dcc8d86629705cea944a4b88ef4cb0e07656ebf223fa287443256414283dd25d91c1cd84c77987f2aec5927af1a9db6085757cb43d90eb170ebf4b47f4f4
-  languageName: node
-  linkType: hard
-
-"meshoptimizer@npm:~0.18.1":
-  version: 0.18.1
-  resolution: "meshoptimizer@npm:0.18.1"
-  checksum: 101dbed8abd4cf167cdb7a0bc13db90dd0743332c689e43b18cc5254d238f0766750752432401fa63dc7e9e32399ef68daacf48f0d89db1484042c1761c7362d
   languageName: node
   linkType: hard
 
@@ -3965,12 +3948,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "three-js-with-yarn@workspace:."
   dependencies:
-    "@types/three": ^0.158.0
+    "@babylonjs/core": ^6.28.1
+    "@types/babylonjs": ^2.4.1
+    babylonjs: ^6.28.1
     css-loader: ^6.8.1
     html-webpack-plugin: ^5.5.3
     serve: ^14.2.1
     style-loader: ^3.3.3
-    three: ^0.158.0
     ts-loader: ^9.5.0
     typescript: ^5.2.2
     webpack: ^5.89.0
@@ -3978,13 +3962,6 @@ __metadata:
     webpack-dev-server: ^4.15.1
   languageName: unknown
   linkType: soft
-
-"three@npm:^0.158.0":
-  version: 0.158.0
-  resolution: "three@npm:0.158.0"
-  checksum: 30decfb78125732ffc287946208d11b3ba8b6d765d7e806c1e0149f6edc3671e69e2cc680082486858bcd123a1ba24f6dbc8222e88b6edb9e17d9487ae4ed821
-  languageName: node
-  linkType: hard
 
 "thunky@npm:^1.0.2":
   version: 1.1.0
