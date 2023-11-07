@@ -60,16 +60,13 @@ box.physicsImpostor = new PhysicsImpostor(
   scene
 );
 
-box.physicsImpostor.registerOnPhysicsCollide(
-  ground.physicsImpostor,
-  (main, collided) => {
-    const collided_object = collided.object as any;
-    if ((collided.object as any).uniqueId === ground.uniqueId) {
-      console.log(`Box collided with ${collided_object.name}`);
-      (box.material as StandardMaterial).diffuseColor = new Color3(1.0, 0, 0);
-    }
+scene.onBeforeRenderObservable.add(() => {
+  if (box.intersectsMesh(ground)) {
+    boxMaterial.diffuseColor = new Color3(1, 0, 0);
+  } else {
+    boxMaterial.diffuseColor = new Color3(0.5, 0.5, 0.5);
   }
-);
+});
 
 /**
  * Render Loop
