@@ -30,6 +30,9 @@ camera.attachControl(canvas, true);
 const light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
 light.intensity = 0.7;
 
+/**
+ * Create Meshes
+ */
 const ground = MeshBuilder.CreateBox(
   "ground",
   { width: 10, height: 1, depth: 10 },
@@ -47,6 +50,8 @@ ground.physicsImpostor = new PhysicsImpostor(
 );
 
 const box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
+const boxMaterial = new StandardMaterial("boxMaterial", scene);
+box.material = boxMaterial;
 box.position.y = 1;
 box.physicsImpostor = new PhysicsImpostor(
   box,
@@ -55,6 +60,20 @@ box.physicsImpostor = new PhysicsImpostor(
   scene
 );
 
+box.physicsImpostor.registerOnPhysicsCollide(
+  ground.physicsImpostor,
+  (main, collided) => {
+    const collided_object = collided.object as any;
+    if ((collided.object as any).uniqueId === ground.uniqueId) {
+      console.log(`Box collided with ${collided_object.name}`);
+      (box.material as StandardMaterial).diffuseColor = new Color3(1.0, 0, 0);
+    }
+  }
+);
+
+/**
+ * Render Loop
+ */
 engine.runRenderLoop(() => {
   scene.render();
 });
