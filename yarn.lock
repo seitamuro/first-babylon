@@ -149,6 +149,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cannon@npm:^0.1.12":
+  version: 0.1.12
+  resolution: "@types/cannon@npm:0.1.12"
+  checksum: 8fbfd5edc6dc22ab9990774e99a3f265c44842673d6e5fd58d1ea54db41f6d700395fa3f77879cb63cca0ca20b6bc641e6d435459db78ceb99b39b7646068a6b
+  languageName: node
+  linkType: hard
+
 "@types/connect-history-api-fallback@npm:^1.3.5":
   version: 1.5.2
   resolution: "@types/connect-history-api-fallback@npm:1.5.2"
@@ -765,7 +772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babylonjs@npm:*, babylonjs@npm:^6.28.1":
+"babylonjs@npm:*":
   version: 6.28.1
   resolution: "babylonjs@npm:6.28.1"
   checksum: 41cf897a4b3f98ff504613f684fce47d6024fe4ba11a46166f46563b2beb0b9f9d6af618fb03e91c78dcd63d9648894a66fbe2cc5a88f0e4e53e572c32adcbd7
@@ -963,6 +970,13 @@ __metadata:
   version: 1.0.30001558
   resolution: "caniuse-lite@npm:1.0.30001558"
   checksum: 1bd6ef855a0de6ff052234912910d699e58edabcf2f34848b7df1f97ee40b059bbdf1901ac919d19360a0603e32e2ac30ae89670ceca8f118e750be3280ef5b1
+  languageName: node
+  linkType: hard
+
+"cannon@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "cannon@npm:0.6.2"
+  checksum: 67f318ab1585b1609b67155ef9d25efccaefcd02f84feabb4d7e9334303eb8c100a2bd7f4ac0f558545a42186e6e567f849cdef6ed302d9bf7a2ddaa292aa938
   languageName: node
   linkType: hard
 
@@ -3950,7 +3964,8 @@ __metadata:
   dependencies:
     "@babylonjs/core": ^6.28.1
     "@types/babylonjs": ^2.4.1
-    babylonjs: ^6.28.1
+    "@types/cannon": ^0.1.12
+    cannon: ^0.6.2
     css-loader: ^6.8.1
     html-webpack-plugin: ^5.5.3
     serve: ^14.2.1
