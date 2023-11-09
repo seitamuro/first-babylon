@@ -59,6 +59,7 @@ interface BoxMesh extends Mesh {
 }
 
 const boxGroup: BoxMesh[] = [];
+const tekito = 100;
 
 for (let i = 0; i < 10; i++) {
   const box = MeshBuilder.CreateBox(`box`, { size: 2 }, scene) as BoxMesh;
