@@ -16,8 +16,6 @@ import { PhysicsImpostor } from "@babylonjs/core";
 import * as CANNON from "cannon";
 
 import "./style.css";
-import { BinaryFileAssetTask } from "babylonjs";
-import { defaultFragmentDeclaration } from "babylonjs/Shaders/ShadersInclude/defaultFragmentDeclaration";
 import { MoveCamera } from "./model/MoveCamera";
 
 /**
@@ -26,7 +24,8 @@ import { MoveCamera } from "./model/MoveCamera";
 const canvas = document.querySelector(".webgl") as HTMLCanvasElement;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const engine = new Engine(canvas, true);
+const gl = canvas.getContext("webgl");
+const engine = new Engine(gl, true, { preserveDrawingBuffer: true });
 const scene = new Scene(engine);
 scene.enablePhysics(
   new Vector3(0, -9.81, 0),
@@ -36,11 +35,11 @@ const recorder = new BABYLON.SceneRecorder();
 recorder.track(scene);
 recorder.getDelta();
 
-const move_camera = new MoveCamera(scene, engine, {
+/*const move_camera = new MoveCamera(scene, engine, {
   move_speed: 0.01,
   rotate_speed: 0.005,
-});
-//const camera = new UniversalCamera("camera", new Vector3(0, 5, -10), scene);
+});*/
+const camera = new UniversalCamera("camera", new Vector3(0, 5, -10), scene);
 //camera.setTarget(Vector3.Zero());
 //camera.attachControl(canvas, true);
 
@@ -86,25 +85,24 @@ for (let i = 0; i < 10; i++) {
     { mass: 1, restitution: 0.9 },
     scene
   );
+  box.actionManager = new BABYLON.ActionManager(scene);
+  box.actionManager.registerAction(
+    new BABYLON.SetValueAction(
+      BABYLON.ActionManager.OnPickDownTrigger,
+      box.material,
+      "diffuseColor",
+      BABYLON.Color3.Yellow()
+    )
+  );
+  box.actionManager.registerAction(
+    new BABYLON.SetValueAction(
+      BABYLON.ActionManager.OnPointerOutTrigger,
+      box.material,
+      "diffuseColor",
+      BABYLON.Color3.White()
+    )
+  );
   boxGroup.push(box);
-}
-
-for (let box of boxGroup) {
-  scene.onBeforeRenderObservable.add(() => {
-    if (box.intersectsMesh(ground)) {
-      box.material.diffuseColor = new Color3(1, 0, 0);
-    } else {
-      box.material.diffuseColor = new Color3(0.5, 0.5, 0.5);
-    }
-
-    for (let other_box of boxGroup) {
-      if (other_box != box) {
-        if (box.intersectsMesh(other_box)) {
-          box.material.diffuseColor.b = 1;
-        }
-      }
-    }
-  });
 }
 
 /**
